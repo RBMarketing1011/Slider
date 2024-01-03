@@ -1,0 +1,287 @@
+/* =========================MAIN RESET AND COLORS============================= */
+
+:root {
+	--main-bg: #240700;
+	--black-bg: #000000;
+	--second-bg: #333333;
+	--heading-color: #b19d56;
+	--text-color: #fbfaf9;
+	--main-red: #d52a0b;
+	--second-red: #880808;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	scroll-behavior: smooth;
+	scroll-margin-top: 100px;
+}
+
+body {
+	background: var(--main-bg);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--heading-color);
+	font-family: 'Oleo Script', 'serif';
+}
+
+p {
+	color: var(--text-color);
+	font-family: 'Poppins', 'sans-serif';
+}
+
+/* ===================================UNIVERSAL CSS======================================== */
+
+.heading {
+	font-size: 5.6rem;
+}
+
+.subheading {
+	font-size: 2.6rem;
+}
+
+.text {
+	font-size: 1.3rem;
+}
+
+/* ==================================SECTION DESIGN======================================== */
+
+#section {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.controls-box {
+	position: absolute;
+	width: 60vw;
+	height: 70vh;
+	/* background: green; */
+	z-index: 10;
+}
+
+.controls-box .btn-right i {
+	position: absolute;
+	top: 50%;
+	right: -100px;
+	transform: translateY(-50%);
+	font-size: 4rem;
+	background: var(--main-bg);
+	color: var(--main-red);
+	box-shadow: 0 0 5px white;
+	border-radius: 50%;
+	border: 1px solid white;
+}
+
+.controls-box .btn-left i {
+	position: absolute;
+	top: 50%;
+	left: -100px;
+	transform: translateY(-50%);
+	font-size: 4rem;
+	background: var(--main-bg);
+	color: var(--main-red);
+	box-shadow: 0 0 5px white;
+	border-radius: 50%;
+	border: 1px solid white;
+}
+
+.controls-box .btn-left:hover,
+.controls-box .btn-right:hover {
+	cursor: pointer;
+}
+
+#section .container {
+	width: 60vw;
+	height: 70vh;
+	box-shadow: 0 0 25px var(--black-bg);
+	border-radius: .6rem;
+	overflow: hidden;
+	text-align: center;
+	background: var(--black-bg);
+}
+
+.content {
+	position: absolute;
+	width: 60vw;
+	height: 70vh;
+	box-shadow: 0 0 25px var(--black-bg);
+	border-radius: .6rem;
+	overflow: hidden;
+	text-align: center;
+	background: var(--black-bg);
+	opacity: 0;
+	display: flex;
+}
+
+.content .red-strip {
+	position: relative;
+	height: 100%;
+	width: 50px;
+	background: var(--main-red);
+}
+
+.background {
+	background: var(--black-bg);
+	position: relative;
+	width: 100%;
+}
+
+.background h1 {
+	position: relative;
+	margin: 2rem;
+}
+
+.background .image {
+	width: 50%;
+	margin: 2rem;
+}
+
+.background .page-num {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	color: var(--main-red);
+	padding: .3rem .7rem;
+	margin: 1rem;
+	opacity: 0;
+}
+
+.dots-container {
+	text-align: center;
+	margin-top: 2rem;
+	width: 60vw;
+	height: 45px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.dots-container span {
+	height: 15px;
+	width: 15px;
+	border-radius: 50%;
+	background: var(--second-red);
+	margin: .3rem;
+}
+
+.dots-container span.active {
+	background: var(--main-red);
+}
+
+/* =====================================ACTIVATE ANIMATIONS ON ACTIVE CLASS========================== */
+
+.content.active {
+	opacity: 1;
+}
+
+.content.active .underline {
+	animation: slideRight 1.2s forwards;
+	animation-delay: .3s;
+}
+
+.content.active .underline::before {
+	animation: slidePast 1.2s forwards;
+}
+
+.content.active .red-strip {
+	animation: slideTop .8s forwards;
+}
+
+.content.active .background h1 {
+	animation: slideTop .8s ease;
+}
+
+.content.active .background .image {
+	animation: fadeIn 2s ease;
+}
+
+.content.active .background .page-num {
+	animation: fadeIn 1.5s forwards;
+	animation-delay: .5s;
+}
+
+/* ========================================Animations=============================== */
+
+@keyframes slideTop {
+	0% {
+		top: -100%;
+	}
+
+	100% {
+		top: 0;
+	}
+}
+
+@keyframes slideRight {
+	0% {
+		right: -150%;
+	}
+
+	100% {
+		right: -50%;
+	}
+}
+
+@keyframes slidePast {
+	0% {
+		right: -100%;
+	}
+
+	100% {
+		right: 150%;
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@media (max-width: 800px) {
+	.heading {
+		font-size: 3.6rem;
+	}
+
+	.subheading {
+		font-size: 1.6rem;
+	}
+}
+
+@media (max-width: 500px) {
+	.heading {
+		font-size: 2.6rem;
+	}
+
+	.subheading {
+		font-size: 1.6rem;
+	}
+
+	.controls-box .btn-right i {
+		right: -60px;
+		font-size: 2.5rem;
+	}
+
+	.controls-box .btn-left i {
+		left: -60px;
+		font-size: 2.5rem;
+	}
+}
